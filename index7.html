@@ -1,0 +1,57 @@
+<!-- Watch -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="fruit in fruits">{{fruit.name}}</li>
+      </ul>
+    </div>
+    <script>
+      const App = {
+        data() {
+          return {
+            user: {
+              name: "Leon",
+              age: 22,
+            },
+            fruits: [
+              { id: 1, name: "Apple" },
+              { id: 2, name: "Banana" },
+              { id: 3, name: "Cherry" },
+            ],
+          };
+        },
+        watch: {
+          user: {
+            handler(newValue, oldValue) {
+              console.log(newValue, oldValue);
+            },
+            deep: true,
+          },
+          fruits: {
+            handler() {
+              console.log(this.fruits);
+            },
+            deep: true,
+            immediate: true,
+          },
+        },
+        methods: {
+          capitalize() {
+            this.fruits.forEach((fruit) => {
+              fruit.name = fruite.name.toUpperCase();
+            });
+          },
+        },
+      };
+      const vm = Vue.createApp(App).mount("#app");
+    </script>
+  </body>
+</html>
